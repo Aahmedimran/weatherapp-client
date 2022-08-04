@@ -1,33 +1,79 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+   
+    <title>Weather App</title>
+
 </head>
+
 <body>
-    <form action="" onsubmit="calc">
-        city
-        <input type="text">
+
+    <h1>Weather App</h1>
+    <form onsubmit="getWeather(); return false">
+        <label for="City">City</label>
+        <input type="text" required id="cityName" placeholder="Search City">
+        <br />
+        <button type="submit">Check</button>
     </form>
 
+    <div  id="content" >
 
+        <p id="location"></p>
+        <div class="icon">
+        <p id="last_updated"></p>
+        <p id="is_day"></p>
+    </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <div class="icon">
+        <p id="icon"></p>
+        <p id="temperature"></p>
+        <p id="text"></p>
+        <p id="error"></p>
+    </div>
+    <p id="humidity"></p>
+    </div>
+  
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js">
+    </script>
     <script>
-        axios.get('/user?ID=12345')
-  .then(function (response) {
-    // handle success
-    console.log(response);
-  })
-  .catch(function (error) {
-    // handle error
-    console.log(error);
-  })
-  .then(function () {
-    // always executed
-  });
+
+const getWeather = () => {
+  
+  // Make a request for a user with a given ID
+  axios
+    .get(`https://locatehost:3000/home`)
+
+
+    .then(function (response) {
+      let Wheatherdata = response.data;
+
+console.log(Wheatherdata);
+      // document.querySelector("#content").className = "content";
+      // document.querySelector("#location").className = "location";
+      // document.querySelector(
+      //   "#location"
+      // ).innerHTML = `${Wheatherdata} `;
+      
+
+     
+   })
+
+    .catch(function (error) {
+      // handle error
+     // alert("PLease enter correct city name / Check Connection ");
+      // document.querySelector(
+      //   "#error"
+      // ).innerHTML = `<b>PLease enter correct city name</b>`;
+    })
+    .then(function () {
+      // always executed
+    });
+};
     </script>
 </body>
+
 </html>

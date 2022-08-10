@@ -45,7 +45,7 @@ const getWeather = () => {
   
   // Make a request for a user with a given ID
   axios
-    .get(`https://locatehost:3000/home`)
+    .get(`https://weatherappserverdeploy.herokuapp.com/weather`)
 
 
     .then(function (response) {
@@ -54,12 +54,17 @@ const getWeather = () => {
 console.log(Wheatherdata);
       // document.querySelector("#content").className = "content";
       // document.querySelector("#location").className = "location";
-      // document.querySelector(
-      //   "#location"
-      // ).innerHTML = `${Wheatherdata} `;
+      document.querySelector(
+        "#location"
+      ).innerHTML = `Wheather${Wheatherdata.weather}`;
       
-
+      document.querySelector(
+        "#icon"
+      ).innerHTML = `city${Wheatherdata.city}`;
      
+      document.querySelector(
+        "#last_updated"
+      ).innerHTML = `temperture${Wheatherdata.temperture}`;
    })
 
     .catch(function (error) {
